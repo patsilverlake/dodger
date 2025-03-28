@@ -1,0 +1,246 @@
+/* public/style.css */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Bubblegum+Sans&display=swap');
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation; /* Prevent browser handling of gestures */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0 10px;
+    background-color: #E4F1FE; /* Light blue background */
+    font-family: 'Bubblegum Sans', cursive;
+    text-align: center;
+    color: #3F51B5; /* Deep blue text */
+    overflow-x: hidden;
+}
+
+h1 {
+    margin: 10px 0 15px 0;
+    color: #FF5722; /* Bright orange */
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.5em;
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.1);
+    letter-spacing: 2px;
+}
+
+.game-container {
+    position: relative;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    overflow: hidden;
+    max-width: 100%;
+    max-height: 80vh;
+    margin-bottom: 10px;
+}
+
+canvas {
+    display: block;
+    background-color: #BBDEFB; /* Light blue background */
+    border-radius: 15px;
+    max-width: 100%;
+    touch-action: none; /* Disable browser touch actions on canvas */
+}
+
+#ui {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: #333;
+    font-size: 1.2em;
+    pointer-events: none;
+}
+
+.score-box { /* Score display */
+   background-color: rgba(255, 255, 255, 0.8);
+   padding: 8px 15px;
+   border-radius: 30px;
+   font-size: 1.3em;
+   color: #FF5722;
+   font-weight: bold;
+   box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+}
+
+/* Game modal styles */
+.game-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(63, 81, 181, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    border-radius: 15px;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    max-width: 90%;
+    animation: bounceIn 0.6s;
+}
+
+.modal-content h2 {
+    color: #FF5722;
+    margin-top: 0;
+    font-size: 1.8em;
+}
+
+.modal-content p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #3F51B5;
+}
+
+.modal-content small {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+#startButton, #restartButton {
+    padding: 12px 25px;
+    font-size: 1.3em;
+    cursor: pointer;
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    font-family: 'Bubblegum Sans', cursive;
+    transition: all 0.3s ease;
+    margin: 10px;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    min-width: 150px;
+    min-height: 50px; /* Make touch targets big enough */
+}
+
+#startButton:hover, #restartButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    background-color: #3AC655;
+}
+
+#startButton:active, #restartButton:active {
+    transform: translateY(1px);
+}
+
+#restartButton {
+    background-color: #FF9800; /* Orange for restart */
+}
+
+#restartButton:hover {
+    background-color: #FFA726;
+}
+
+#gameOver {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    z-index: 50;
+    min-width: 60%;
+}
+
+#gameOver h2 {
+    margin-top: 0;
+    color: #FF5252; /* Bright red */
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+#gameOver p {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+}
+
+/* Helper class */
+.hidden {
+    display: none !important;
+}
+
+/* Animations */
+@keyframes bounceIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    70% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+/* Speed boost visual effect */
+@keyframes speedBoostGlow {
+    0% { box-shadow: 0 0 5px 2px rgba(76, 175, 80, 0.6); }
+    50% { box-shadow: 0 0 15px 5px rgba(76, 175, 80, 0.8); }
+    100% { box-shadow: 0 0 5px 2px rgba(76, 175, 80, 0.6); }
+}
+
+.speed-boost-active {
+    animation: speedBoostGlow 0.8s infinite;
+}
+
+/* Bomb explosion effect */
+@keyframes bombExplosion {
+    0% { background-color: rgba(255, 87, 34, 0); }
+    50% { background-color: rgba(255, 87, 34, 0.3); }
+    100% { background-color: rgba(255, 87, 34, 0); }
+}
+
+.bomb-active {
+    animation: bombExplosion 0.5s;
+}
+
+/* Media queries for different screen sizes */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+    
+    .modal-content h2 {
+        font-size: 1.5em;
+    }
+    
+    .modal-content p {
+        font-size: 1.1em;
+    }
+    
+    #startButton, #restartButton {
+        padding: 12px 20px;
+        font-size: 1.2em;
+    }
+}
+
+@media (max-height: 600px) {
+    h1 {
+        font-size: 1.8em;
+        margin: 5px 0;
+    }
+    
+    .game-container {
+        max-height: 85vh;
+    }
+}

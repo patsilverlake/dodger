@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Animal Kingdom</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Animal Kingdom</h1>
+    <div class="game-container">
+        <canvas id="gameCanvas" width="400" height="600"></canvas>
+        <div id="ui">
+            <div class="score-box">Score: <span id="scoreDisplay">0</span></div>
+            <div id="gameOver" class="hidden">
+                <h2>Game Over!</h2>
+                <p>Final Score: <span id="finalScore">0</span></p>
+                <button id="restartButton">Play Again</button>
+            </div>
+        </div>
+        <!-- Game modal for start/restart -->
+        <div id="gameModal" class="game-modal">
+            <div class="modal-content">
+                <h2 id="modalTitle">Welcome to Animal Kingdom!</h2>
+                <p id="modalMessage">Help the rabbit dodge the wild animals!</p>
+                <button id="startButton">Start Game</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- The compiled JavaScript file -->
+    <script src="dist/game.js" defer></script>
+</body>
+</html>
