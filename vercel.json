@@ -1,9 +1,4 @@
 {
   "version": 2,
-  "buildCommand": "npx tsc",
-  "outputDirectory": "public",
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/index.html" }
-  ]
+  "public": true
 } 
