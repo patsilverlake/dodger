@@ -11,7 +11,9 @@
   "keywords": ["game", "typescript", "canvas"],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "typescript": "^5.0.0"
+  },
+  "devDependencies": {
   }
 }
