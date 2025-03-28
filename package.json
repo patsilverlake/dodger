@@ -5,7 +5,7 @@
   "main": "public/dist/game.js",
   "scripts": {
     "build": "tsc",
-    "vercel-build": "npx tsc",
+    "vercel-build": "node build.js",
     "start": "tsc && echo 'Open public/index.html in your browser'",
     "dev": "tsc -w"
   },
